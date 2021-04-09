@@ -1,5 +1,6 @@
 # Risk Game
-![](https://i.pinimg.com/originals/84/cd/98/84cd983d3824eefb24c1c507e1dc7496.jpg)
+
+<img src="https://i.pinimg.com/originals/84/cd/98/84cd983d3824eefb24c1c507e1dc7496.jpg" height="230" width="400"/>
 
 ### Project in Software-Engineering
 
