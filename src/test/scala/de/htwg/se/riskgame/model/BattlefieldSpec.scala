@@ -12,11 +12,9 @@ class BattlefieldSpec extends AnyWordSpec with Matchers {
         battlefield.name should be("Battlefield Name")
         battlefield.mapName should be("Map Name")
       }
-      "have a method to get String representation of the map" in {
-        battlefield.mapToString should be("Map Name")
-      }
       "have a nice String representation" in {
         battlefield.toString should be("Battlefield Name")
+        battlefield.mapToString should be("Map Name")
       }
     }
   }
