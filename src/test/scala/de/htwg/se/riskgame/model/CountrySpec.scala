@@ -1,8 +1,9 @@
 package de.htwg.se.riskgame.model
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class CountrySpec extends WordSpec with Matchers {
+class CountrySpec extends AnyWordSpec with Matchers {
   "A Country" when {
     "new" should {
       val country = Country("Country Name")
