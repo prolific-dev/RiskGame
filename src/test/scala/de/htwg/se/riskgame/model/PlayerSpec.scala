@@ -1,17 +1,15 @@
 package de.htwg.se.riskgame.model
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class PlayerSpec extends WordSpec with Matchers {
+class PlayerSpec extends AnyWordSpec with Matchers {
   "A Player" when {
     "new" should {
-      val player = Player("Your name", "Team Color")
+      val player = Player("Your name", Team.Blue)
       "have a name and a team color" in {
         player.name should be("Your name")
-        player.teamColor should be("Team Color")
-      }
-      "have a method to get String representation of the team" in {
-        player.teamColorToString should be ("Team Color")
+        player.teamColor should be(Team.Blue)
       }
       "have a nice String representation" in {
         player.toString should be("Your name")

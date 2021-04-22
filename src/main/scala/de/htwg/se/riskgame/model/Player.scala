@@ -1,6 +1,7 @@
 package de.htwg.se.riskgame.model
 
-case class Player(name: String, teamColor: String) {
-  def teamColorToString: String = teamColor
+import de.htwg.se.riskgame.model.Team.Team
+
+case class Player(name: String, teamColor: Team) {
   override def toString: String = name
 }
