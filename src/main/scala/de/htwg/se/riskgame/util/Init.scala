@@ -14,47 +14,52 @@ object Init {
     val defaultArmy = 3
 
     for (line <- mapSource.getLines()) {
-      if (!(line.startsWith("+") || line.startsWith("-"))) {
-        battlefield = addContinent(line)
+      if (line.startsWith("+")) {
+        battlefield = addCountry(line)
 
-      } else if (line.startsWith("+")) {
-        val countryName = line.substring(1)
-        val country = Country(countryName, Nil, Team(nextInt(4) + 1), defaultArmy)
-        val oldCountryList = battlefield.continentList.head.countryList
-        val newCountryList = country :: oldCountryList
-        val newContinent = battlefield.continentList.head.copy(countryList = newCountryList)
-        val newContinentList = newContinent :: battlefield.continentList.drop(1)
-        battlefield = battlefield.copy(continentList = newContinentList)
+      } else if (line.startsWith("-")) {
+        battlefield = addNeighbor(line)
 
       } else {
-        val neighborName = line.substring(1)
-        val oldNeighbors = battlefield.continentList.head.countryList.head.neighbors
-        val newNeighbors = neighborName :: oldNeighbors
-        val oldCountry = battlefield.continentList.head.countryList.head
-        val newCountry = oldCountry.copy(neighbors = newNeighbors)
-        val oldCountryList = battlefield.continentList.head.countryList
-        val newCountryList = newCountry :: oldCountryList.drop(1)
-        val newContinent = battlefield.continentList.head.copy(countryList = newCountryList)
-        val newContinentList = newContinent :: battlefield.continentList.drop(1)
-        battlefield = battlefield.copy(continentList = newContinentList)
+        battlefield = addContinent(line)
       }
     }
 
 
-    def addContinent(continentName: String): Battlefield = {
-      val continent = Continent(continentName, Nil)
-      val newContinentList = continent :: battlefield.continentList
+    def addContinent(continentLine: String): Battlefield = {
+      val newContinentList = Continent(continentLine, Nil) :: battlefield.continentList
       battlefield.copy(continentList = newContinentList)
     }
 
-    def addCountry(): Battlefield = {battlefield}
+    def addCountry(countryLine: String): Battlefield = {
+      val countryName = countryLine.substring(1)
+      val country = Country(countryName, Nil, Team(nextInt(4) + 1), defaultArmy)
+      val oldCountryList = battlefield.continentList.head.countryList
+      val newCountryList = country :: oldCountryList
+      val newContinent = battlefield.continentList.head.copy(countryList = newCountryList)
+      val newContinentList = newContinent :: battlefield.continentList.drop(1)
+      battlefield.copy(continentList = newContinentList)
 
-    def addNeighbor(): Battlefield = {battlefield}
+      battlefield
+    }
+
+    def addNeighbor(neighborLine: String): Battlefield = {
+      val newNeighbors = addNeighborToList(neighborLine.substring(1))
+      val oldCountry = battlefield.continentList.head.countryList.head
+      val newCountry = oldCountry.copy(neighbors = newNeighbors)
+      val oldCountryList = battlefield.continentList.head.countryList
+      val newCountryList = newCountry :: oldCountryList.drop(1)
+      val newContinent = battlefield.continentList.head.copy(countryList = newCountryList)
+      val newContinentList = newContinent :: battlefield.continentList.drop(1)
+      battlefield.copy(continentList = newContinentList)
+    }
+
+    def addNeighborToList(neighborName: String): List[String] = {
+      val oldNeighbors = battlefield.continentList.head.countryList.head.neighbors
+      neighborName :: oldNeighbors
+    }
 
 
     battlefield
   }
-
-
-  //def updateCountryList(name: String, continent: Continent): Continent = {}
 }
