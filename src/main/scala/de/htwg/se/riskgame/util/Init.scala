@@ -9,7 +9,6 @@ object Init {
   def init(name: String): Battlefield = {
     val filename = "src/main/scala/de/htwg/se/riskgame/resources/" + name + ".txt"
     val mapSource = Source.fromFile(filename)
-
     val defaultArmy = 3
     var battlefield = Battlefield(name, Nil)
 
@@ -33,12 +32,8 @@ object Init {
     }
 
     def addCountry(countryLine: String): Battlefield = {
-      val newCountryList = addCountryToList(countryLine.substring(1))
-      val newContinent = battlefield.continentList.head.copy(countryList = newCountryList)
-      val newContinentList = newContinent :: battlefield.continentList.drop(1)
+      val newContinentList = updateContinentList(addCountryToList(countryLine.substring(1)))
       battlefield.copy(continentList = newContinentList)
-
-      battlefield
     }
 
     def addNeighbor(neighborLine: String): Battlefield = {
@@ -46,9 +41,7 @@ object Init {
       val oldCountry = battlefield.continentList.head.countryList.head
       val newCountry = oldCountry.copy(neighbors = newNeighbors)
       val oldCountryList = battlefield.continentList.head.countryList
-      val newCountryList = newCountry :: oldCountryList.drop(1)
-      val newContinent = battlefield.continentList.head.copy(countryList = newCountryList)
-      val newContinentList = newContinent :: battlefield.continentList.drop(1)
+      val newContinentList = updateContinentList(newCountry :: oldCountryList.drop(1))
       battlefield.copy(continentList = newContinentList)
     }
 
@@ -61,7 +54,11 @@ object Init {
       val country = Country(countryName, Nil, Team(nextInt(4) + 1), defaultArmy)
       val oldCountryList = battlefield.continentList.head.countryList
       country :: oldCountryList
+    }
 
+    def updateContinentList(newCountryList: List[Country]): List[Continent] = {
+      val newContinent = battlefield.continentList.head.copy(countryList = newCountryList)
+      newContinent :: battlefield.continentList.drop(1)
     }
 
     battlefield

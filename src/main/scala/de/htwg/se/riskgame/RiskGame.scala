@@ -7,6 +7,10 @@ object RiskGame {
   def main(args: Array[String]): Unit = {
     println(helloWorld())
     val b = init("worldmap")
+
+    for (x <- b.continentList) {
+      println(x.toString)
+    }
   }
 
   def helloWorld(): String = {
