@@ -1,14 +1,25 @@
 package de.htwg.se.riskgame
 
+import de.htwg.se.riskgame.aview.Tui
 import de.htwg.se.riskgame.model._
-import scala.util.Random.nextInt
 
+import scala.util.Random.nextInt
+import scala.io.StdIn.readLine
 import scala.io.Source
 
 object RiskGame {
+  var tui = new Tui
+  var battlefield = Battlefield(" ", Nil)
+
   def main(args: Array[String]): Unit = {
-    println(helloWorld())
-    init("worldmap")
+    var input: String = ""
+
+    println("Welcome to Risk Game!")
+
+    do {
+      input = readLine()
+      battlefield = tui.processInputLine(input, battlefield)
+    } while (input != "q")
   }
 
   def init(name: String): Battlefield = {
@@ -49,9 +60,4 @@ object RiskGame {
     }
     battlefield
   }
-
-  def helloWorld(): String = {
-    "Welcome to Risk Game!"
-  }
-
 }
