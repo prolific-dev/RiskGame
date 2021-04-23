@@ -10,8 +10,9 @@ object Init {
     val filename = "src/main/scala/de/htwg/se/riskgame/resources/" + name + ".txt"
     val mapSource = Source.fromFile(filename)
 
-    var battlefield = Battlefield(name, Nil)
     val defaultArmy = 3
+    var battlefield = Battlefield(name, Nil)
+
 
     for (line <- mapSource.getLines()) {
       if (line.startsWith("+")) {
@@ -32,10 +33,7 @@ object Init {
     }
 
     def addCountry(countryLine: String): Battlefield = {
-      val countryName = countryLine.substring(1)
-      val country = Country(countryName, Nil, Team(nextInt(4) + 1), defaultArmy)
-      val oldCountryList = battlefield.continentList.head.countryList
-      val newCountryList = country :: oldCountryList
+      val newCountryList = addCountryToList(countryLine.substring(1))
       val newContinent = battlefield.continentList.head.copy(countryList = newCountryList)
       val newContinentList = newContinent :: battlefield.continentList.drop(1)
       battlefield.copy(continentList = newContinentList)
@@ -59,6 +57,12 @@ object Init {
       neighborName :: oldNeighbors
     }
 
+    def addCountryToList(countryName: String): List[Country] = {
+      val country = Country(countryName, Nil, Team(nextInt(4) + 1), defaultArmy)
+      val oldCountryList = battlefield.continentList.head.countryList
+      country :: oldCountryList
+
+    }
 
     battlefield
   }
