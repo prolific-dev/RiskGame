@@ -73,6 +73,6 @@ Asia
 Australia
 +aus1
 -aus2
-+aus
++aus2
 -aus1
 -as4

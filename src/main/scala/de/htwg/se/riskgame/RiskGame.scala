@@ -11,7 +11,7 @@ object RiskGame {
     init("worldmap")
   }
 
-  def init(name: String): Unit = {
+  def init(name: String): Battlefield = {
     val filename = "src/main/scala/de/htwg/se/riskgame/resources/" + name + ".txt"
     val mapSource = Source.fromFile(filename)
 
@@ -28,21 +28,26 @@ object RiskGame {
       } else if (line.startsWith("+")) {
         val countryName = line.substring(1)
         val country = Country(countryName, Nil, Team(nextInt(4) + 1), defaultArmy)
-
-        val newCountryList = country :: battlefield.continentList.head.countryList
-
+        val oldCountryList = battlefield.continentList.head.countryList
+        val newCountryList = country :: oldCountryList
         val newContinent = battlefield.continentList.head.copy(countryList = newCountryList)
-
-        val newContinentList = newContinent :: battlefield.continentList
-
+        val newContinentList = newContinent :: battlefield.continentList.drop(1)
         battlefield = battlefield.copy(continentList = newContinentList)
 
+      } else {
+        val neighborName = line.substring(1)
+        val oldNeighbors = battlefield.continentList.head.countryList.head.neighbors
+        val newNeighbors = neighborName :: oldNeighbors
+        val oldCountry = battlefield.continentList.head.countryList.head
+        val newCountry = oldCountry.copy(neighbors = newNeighbors)
+        val oldCountryList = battlefield.continentList.head.countryList
+        val newCountryList = newCountry :: oldCountryList.drop(1)
+        val newContinent = battlefield.continentList.head.copy(countryList = newCountryList)
+        val newContinentList = newContinent :: battlefield.continentList.drop(1)
+        battlefield = battlefield.copy(continentList = newContinentList)
       }
     }
-
-    for (e <- battlefield.continentList) {
-      println(e.toString)
-    }
+    battlefield
   }
 
   def helloWorld(): String = {
