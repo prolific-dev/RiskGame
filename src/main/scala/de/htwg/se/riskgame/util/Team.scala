@@ -1,4 +1,4 @@
-package de.htwg.se.riskgame.model
+package de.htwg.se.riskgame.util
 
 object Team extends Enumeration {
   type Team = Value

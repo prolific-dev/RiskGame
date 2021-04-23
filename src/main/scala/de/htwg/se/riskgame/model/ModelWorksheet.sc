@@ -1,4 +1,8 @@
+val eList: List[Int] = Nil
 
+eList.drop(1)
+
+eList
 
 
 val a = List(1, 2, 3)

@@ -1,16 +1,11 @@
-package de.htwg.se.riskgame
+package de.htwg.se.riskgame.util
 
-import de.htwg.se.riskgame.model._
-import de.htwg.se.riskgame.util.Team
+import de.htwg.se.riskgame.model.{Battlefield, Continent, Country}
 
-import scala.util.Random.nextInt
 import scala.io.Source
+import scala.util.Random.nextInt
 
-object RiskGame {
-  def main(args: Array[String]): Unit = {
-    println(helloWorld())
-    val b = init("worldmap")
-  }
+object Init {
   def init(name: String): Battlefield = {
     val filename = "src/main/scala/de/htwg/se/riskgame/resources/" + name + ".txt"
     val mapSource = Source.fromFile(filename)
@@ -20,10 +15,7 @@ object RiskGame {
 
     for (line <- mapSource.getLines()) {
       if (!(line.startsWith("+") || line.startsWith("-"))) {
-        val continentName = line
-        val continent = Continent(continentName, Nil)
-        val newContinentList = continent :: battlefield.continentList
-        battlefield = battlefield.copy(continentList = newContinentList)
+        battlefield = addContinent(line)
 
       } else if (line.startsWith("+")) {
         val countryName = line.substring(1)
@@ -47,12 +39,22 @@ object RiskGame {
         battlefield = battlefield.copy(continentList = newContinentList)
       }
     }
+
+
+    def addContinent(continentName: String): Battlefield = {
+      val continent = Continent(continentName, Nil)
+      val newContinentList = continent :: battlefield.continentList
+      battlefield.copy(continentList = newContinentList)
+    }
+
+    def addCountry(): Battlefield = {battlefield}
+
+    def addNeighbor(): Battlefield = {battlefield}
+
+
     battlefield
   }
 
 
-  def helloWorld(): String = {
-    "Welcome to Risk Game!"
-  }
-
+  //def updateCountryList(name: String, continent: Continent): Continent = {}
 }
