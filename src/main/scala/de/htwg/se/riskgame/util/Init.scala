@@ -36,10 +36,9 @@ object Init {
       battlefield.copy(continentList = newContinentList)
     }
 
+    // TODO: Check if method might be compatible with updateContinentList()
     def addNeighbor(neighborLine: String): Battlefield = {
-      val newNeighbors = addNeighborToList(neighborLine.substring(1))
-      val oldCountry = battlefield.continentList.head.countryList.head
-      val newCountry = oldCountry.copy(neighbors = newNeighbors)
+      val newCountry = updateCountry(addNeighborToList(neighborLine.substring(1)))
       val oldCountryList = battlefield.continentList.head.countryList
       val newContinentList = updateContinentList(newCountry :: oldCountryList.drop(1))
       battlefield.copy(continentList = newContinentList)
@@ -59,6 +58,11 @@ object Init {
     def updateContinentList(newCountryList: List[Country]): List[Continent] = {
       val newContinent = battlefield.continentList.head.copy(countryList = newCountryList)
       newContinent :: battlefield.continentList.drop(1)
+    }
+
+    def updateCountry(newNeighbors: List[String]): Country = {
+      val oldCountry = battlefield.continentList.head.countryList.head
+      oldCountry.copy(neighbors = newNeighbors)
     }
 
     battlefield

@@ -1,6 +1,5 @@
 package de.htwg.se.riskgame
 
-import de.htwg.se.riskgame.model._
 import de.htwg.se.riskgame.util.Init.init
 
 object RiskGame {
