@@ -5,7 +5,7 @@ import de.htwg.se.riskgame.util.Init.init
 object RiskGame {
   def main(args: Array[String]): Unit = {
     println(helloWorld())
-    val b = init("worldmap")
+    val b = init("testmap")
 
     for (x <- b.continentList) {
       println(x.toString)

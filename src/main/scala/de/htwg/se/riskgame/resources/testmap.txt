@@ -1,0 +1,15 @@
+Continent1
++country1_1
+-country1_2
++country1_2
+-country1_1
+-country2-2
+Continent2
++country2_1
+-country2_2
++country2_2
+-country2_1
+-country2_3
+-country1_2
++country2_3
+-country2_2

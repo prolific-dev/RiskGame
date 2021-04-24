@@ -1,6 +1,5 @@
 package de.htwg.se.riskgame.aview
 
-import de.htwg.se.riskgame.RiskGame
 import de.htwg.se.riskgame.model.Battlefield
 
 class Tui {
@@ -10,7 +9,7 @@ class Tui {
       case "q" => battlefield
       case "i" =>
         println("Battlefield gets initialized. Get ready for the war!")
-        RiskGame.init("worldmap")
+        battlefield
       case "m" =>
         println("Map: (Still in process)")
         battlefield
