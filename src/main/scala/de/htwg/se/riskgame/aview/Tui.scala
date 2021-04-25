@@ -14,6 +14,10 @@ class Tui {
         val mapToInit = input.split(" ")(1)
         println(initMapMessage())
         init(mapToInit)
+      case "i worldmap" =>
+        val mapToInit = input.split(" ")(1)
+        println(initMapMessage())
+        init(mapToInit)
       case _ =>
         println(inputNotRecognizedMessage())
         battlefield
