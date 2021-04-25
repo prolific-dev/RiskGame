@@ -9,10 +9,10 @@ class CountrySpec extends AnyWordSpec with Matchers {
     "new" should {
       val country = Country("Country Name", Nil, Team(1), 3)
       "have a country name, a neighbor list, a team holder, an army value" in {
-       country.name should be("Country Name")
-       country.neighbors should be(Nil)
-       country.holder should be(Team(1))
-       country.army should be(3)
+        country.name should be("Country Name")
+        country.neighbors should be(Nil)
+        country.holder should be(Team(1))
+        country.army should be(3)
       }
       "have the right type parameter" in {
         country.name.isInstanceOf[String] should be(true)

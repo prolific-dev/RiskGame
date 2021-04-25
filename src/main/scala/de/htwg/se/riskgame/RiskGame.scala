@@ -2,7 +2,7 @@ package de.htwg.se.riskgame
 
 import de.htwg.se.riskgame.aview.Tui
 import de.htwg.se.riskgame.model.Battlefield
-import de.htwg.se.riskgame.util.PrintMessage.helloMessage
+import de.htwg.se.riskgame.util.PrintMessage.{chooseMapMessage, helloMessage}
 
 import scala.io.StdIn.readLine
 
@@ -14,6 +14,7 @@ object RiskGame {
     var input = ""
 
     println(helloMessage())
+    println(chooseMapMessage())
 
     do {
       input = readLine()
