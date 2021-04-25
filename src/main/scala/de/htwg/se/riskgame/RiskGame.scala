@@ -1,19 +1,23 @@
 package de.htwg.se.riskgame
 
-import de.htwg.se.riskgame.util.Init.init
+import de.htwg.se.riskgame.aview.Tui
+import de.htwg.se.riskgame.model.Battlefield
+import de.htwg.se.riskgame.util.PrintMessage.helloMessage
+
+import scala.io.StdIn.readLine
 
 object RiskGame {
+  val tui = new Tui
+  var battlefield: Battlefield = Battlefield("", Nil)
+
   def main(args: Array[String]): Unit = {
-    println(helloWorld())
-    val b = init("testmap")
+    var input = ""
 
-    for (x <- b.continentList) {
-      println(x.toString)
-    }
+    println(helloMessage())
+
+    do {
+      input = readLine()
+      battlefield = tui.processInputLine(input, battlefield)
+    } while (input != "q")
   }
-
-  def helloWorld(): String = {
-    "Welcome to Risk Game!"
-  }
-
 }
