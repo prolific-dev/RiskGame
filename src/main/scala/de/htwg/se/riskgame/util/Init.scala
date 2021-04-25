@@ -64,7 +64,6 @@ object Init {
       val oldCountry = battlefield.continentList.head.countryList.head
       oldCountry.copy(neighbors = newNeighbors)
     }
-
     battlefield
   }
 }

@@ -22,6 +22,8 @@ class CountrySpec extends AnyWordSpec with Matchers {
       }
       "have a nice String representation" in {
         country.toString should be("Country Name")
+        country.holderToString should be("BLUE")
+        country.armyToString should be("3")
       }
     }
   }
