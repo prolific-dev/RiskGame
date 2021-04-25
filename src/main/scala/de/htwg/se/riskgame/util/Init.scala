@@ -25,7 +25,6 @@ object Init {
       }
     }
 
-
     def addContinent(newContinent: String): Battlefield = {
       val continentToAdd = Continent(newContinent, Nil)
       val newContinentList = updateContinentList(continentToAdd)
@@ -58,14 +57,13 @@ object Init {
 
     def updateContinentList(newContinent: Continent): List[Continent] = {
       val oldContinentList = battlefield.continentList
-      val oldContinent = oldContinentList.head
 
-      val nonEmpty = oldContinentList.nonEmpty
-
-      if (nonEmpty || oldContinent.name.equals(newContinent.name)) {
+      if (oldContinentList.isEmpty) {
+        newContinent :: oldContinentList
+      } else if (oldContinentList.head.name.equals(newContinent.name)) {
         newContinent :: oldContinentList.drop(1)
       } else {
-        newContinent :: oldContinentList
+        newContinent :: oldContinentList.drop(1)
       }
     }
 
@@ -73,14 +71,13 @@ object Init {
       val oldContinentList = battlefield.continentList
       val oldContinent = oldContinentList.head
       val oldCountryList = oldContinent.countryList
-      val oldCountry = oldContinent.countryList.head
 
-      val nonEmpty = oldCountryList.nonEmpty
-
-      if (nonEmpty || oldCountry.name.equals(newCountry.name)) {
+      if (oldCountryList.isEmpty) {
+        newCountry :: oldCountryList
+      } else if (oldCountryList.head.name.equals(newCountry.name)) {
         newCountry :: oldCountryList.drop(1)
       } else {
-        newCountry :: oldCountryList
+        newCountry :: oldCountryList.drop(1)
       }
     }
 
@@ -93,7 +90,6 @@ object Init {
       val neighborToAdd = newNeighbor.substring(1)
       neighborToAdd :: oldNeighborsList
     }
-
     battlefield
   }
 }
