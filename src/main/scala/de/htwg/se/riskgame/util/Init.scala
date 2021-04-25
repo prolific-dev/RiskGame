@@ -90,6 +90,7 @@ object Init {
       val neighborToAdd = newNeighbor.substring(1)
       neighborToAdd :: oldNeighborsList
     }
+
     battlefield
   }
 }

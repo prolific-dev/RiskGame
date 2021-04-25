@@ -10,11 +10,11 @@ class DiceSpec extends AnyWordSpec with Matchers {
       "have pips between 1 and 6 " in {
         dice.pips should {
           equal(1) or
-          equal(2) or
-          equal(3) or
-          equal(4) or
-          equal(5) or
-          equal(6)
+            equal(2) or
+            equal(3) or
+            equal(4) or
+            equal(5) or
+            equal(6)
         }
       }
       "pips are instance of Int" in {
@@ -23,11 +23,11 @@ class DiceSpec extends AnyWordSpec with Matchers {
       "have a nice String representation" in {
         dice.toString should {
           equal("1") or
-          equal("2") or
-          equal("3") or
-          equal("4") or
-          equal("5") or
-          equal("6")
+            equal("2") or
+            equal("3") or
+            equal("4") or
+            equal("5") or
+            equal("6")
         }
       }
     }
