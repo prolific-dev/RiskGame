@@ -4,6 +4,8 @@ import de.htwg.se.riskgame.util.Team
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
+import scala.Console.{BLUE, RESET}
+
 class CountrySpec extends AnyWordSpec with Matchers {
   "A Country" when {
     "new" should {
@@ -24,6 +26,7 @@ class CountrySpec extends AnyWordSpec with Matchers {
         country.toString should be("Country Name")
         country.holderToString should be("BLUE")
         country.armyToString should be("3")
+        country.toColoredString should be(s"$RESET${BLUE}3$RESET")
       }
     }
   }

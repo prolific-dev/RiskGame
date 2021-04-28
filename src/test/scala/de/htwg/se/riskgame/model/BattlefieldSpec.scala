@@ -1,5 +1,6 @@
 package de.htwg.se.riskgame.model
 
+import de.htwg.se.riskgame.util.Team
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
@@ -18,6 +19,22 @@ class BattlefieldSpec extends AnyWordSpec with Matchers {
       }
       "have a nice String representation" in {
         battlefield.toString should be("Battlefield Name")
+      }
+    }
+    "print out on console as map" should {
+      // Similar to testmap.txt
+      val cty1_1 = Country("cty1_1", List("cty1_2"), Team(1), 3)
+      val cty1_2 = Country("cty1_2", List("cty1_2", "cty2_2"), Team(1), 3)
+      val cty2_1 = Country("cty2_1", List("cty2_2"), Team(2), 3)
+      val cty2_2 = Country("cty2_2", List("cty2_1", "cty2_3", "cty1_2"), Team(2), 3)
+      val cty2_3 = Country("cty2_3", List("cty2_2"), Team(2), 3)
+      val co1 = Continent("co1", List(cty1_1, cty1_2))
+      val co2 = Continent("co2", List(cty2_1, cty2_2, cty2_3))
+      val battlefield = Battlefield("battlefield", List(co1, co2))
+
+      "initialize a map matrix" in {
+        battlefield.maxCountryListSize should be(3)
+        battlefield.mapMatrix should be(Array(Array(cty1_1, cty2_1), Array(cty1_2, cty2_2), Array(null, cty2_3)))
       }
     }
   }

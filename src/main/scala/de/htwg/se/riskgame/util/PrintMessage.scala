@@ -5,8 +5,12 @@ object PrintMessage {
     "Welcome to Risk Game!"
   }
 
+  def choosePlayersMessage(): String = {
+    "How many players are going to play? (1-4)"
+  }
+
   def chooseMapMessage(): String = {
-    "Choose a map:\n worldmap\n testmap"
+    "Choose a map (type \"init ~map~\"):\n worldmap\n testmap"
   }
 
   def initMapMessage(): String = {

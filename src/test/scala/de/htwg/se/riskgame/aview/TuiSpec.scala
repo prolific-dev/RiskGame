@@ -14,7 +14,7 @@ class TuiSpec extends AnyWordSpec with Matchers {
       battlefield.continentList should be(Nil)
     }
     "initialize a new battlefield" in {
-      battlefield = tui.processInputLine("i testmap", battlefield)
+      battlefield = tui.processInputLine("init testmap", battlefield)
       battlefield.name should be("testmap")
       battlefield.continentList should not be Nil
     }
