@@ -9,7 +9,7 @@ case class Battlefield(name: String, continentList: List[Continent]) {
       row =>
         row.foreach(country =>
           if (country == null) print("#\t")
-          else print(country.toString + "(" + country.toColoredString + ")\t"))
+          else print(country.toString + "\t"))
         println()
     }.toString
   }
@@ -17,14 +17,10 @@ case class Battlefield(name: String, continentList: List[Continent]) {
   def mapMatrix: Array[Array[Country]] = {
     val matrix = Array.ofDim[Country](maxCountryListSize, continentList.size)
 
-    var continentCounter = 0
     for (continent <- continentList) {
-      var countryCounter = 0
       for (country <- continent.countryList) {
-        matrix(countryCounter)(continentCounter) = country
-        countryCounter += 1
+        matrix(continent.countryList.indexOf(country))(continentList.indexOf(continent)) = country
       }
-      continentCounter += 1
     }
     matrix
   }

@@ -23,10 +23,10 @@ class CountrySpec extends AnyWordSpec with Matchers {
         country.army.isInstanceOf[Int] should be(true)
       }
       "have a nice String representation" in {
-        country.toString should be("Country Name")
+        country.nameToString should be("Country Name")
         country.holderToString should be("BLUE")
         country.armyToString should be("3")
-        country.toColoredString should be(s"$RESET${BLUE}3$RESET")
+        country.toString should be(s"Country Name($RESET${BLUE}3$RESET)")
       }
     }
   }
