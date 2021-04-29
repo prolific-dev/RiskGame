@@ -22,7 +22,7 @@ object RiskGame {
       try {
         players = readLine().toInt
       } catch {
-        case e: NumberFormatException => println("Input must be a number of type Integer.")
+        case _: Throwable => println("Input must be a number of type Integer.")
       }
     } while (players < 2 || players > 4)
 
