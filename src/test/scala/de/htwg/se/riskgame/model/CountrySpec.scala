@@ -4,7 +4,7 @@ import de.htwg.se.riskgame.util.Team
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
-import scala.Console.{BLUE, RESET}
+import scala.Console._
 
 class CountrySpec extends AnyWordSpec with Matchers {
   "A Country" when {
@@ -28,6 +28,16 @@ class CountrySpec extends AnyWordSpec with Matchers {
         country.armyToString should be("3")
         country.toString should be(s"Country Name($RESET${BLUE}3$RESET)")
       }
+    }
+    "have the right String representation for the right holder" in {
+      val countryBlue = Country("Country Name", Nil, Team(1), 3)
+      val countryRed = Country("Country Name", Nil, Team(2), 3)
+      val countryGreen = Country("Country Name", Nil, Team(3), 3)
+      val countryYellow = Country("Country Name", Nil, Team(4), 3)
+      countryBlue.toString should be(s"Country Name($RESET${BLUE}3$RESET)")
+      countryRed.toString should be(s"Country Name($RESET${RED}3$RESET)")
+      countryGreen.toString should be(s"Country Name($RESET${GREEN}3$RESET)")
+      countryYellow.toString should be(s"Country Name($RESET${YELLOW}3$RESET)")
     }
   }
 }

@@ -13,6 +13,11 @@ class TuiSpec extends AnyWordSpec with Matchers {
       battlefield.name should be("")
       battlefield.continentList should be(Nil)
     }
+    "start" in {
+      battlefield = tui.processInputLine("s", battlefield)
+      battlefield.name should be("")
+      battlefield.continentList should be(Nil)
+    }
     "initialize a new battlefield" in {
       battlefield = tui.processInputLine("init testmap", battlefield)
       battlefield.name should be("testmap")
