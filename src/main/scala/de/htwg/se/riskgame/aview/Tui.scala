@@ -16,7 +16,7 @@ class Tui {
       case "init testmap" | "init worldmap" =>
         val mapToInit = input.split(" ")(1)
         println(initMapMessage())
-        loadMap(mapToInit)
+        loadMap(mapToInit, battlefield.players)
       case _ =>
         println(inputNotRecognizedMessage())
         battlefield

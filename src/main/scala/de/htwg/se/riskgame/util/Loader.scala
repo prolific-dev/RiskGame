@@ -6,12 +6,11 @@ import scala.io.Source
 import scala.util.Random.nextInt
 
 object Loader {
-  def loadMap(name: String): Battlefield = {
+  def loadMap(name: String, players: Int): Battlefield = {
     val filename = "src/main/scala/de/htwg/se/riskgame/resources/" + name + ".txt"
     val mapSource = Source.fromFile(filename)
-    val defaultPlayer = 2
     val defaultArmy = 3
-    var battlefield = Battlefield(name, Nil)
+    var battlefield = Battlefield(name, Nil, players)
 
 
     for (line <- mapSource.getLines()) {
@@ -29,7 +28,7 @@ object Loader {
     }
 
     def addCountry(newCountry: String): Battlefield = {
-      val countryToAdd = Country(newCountry.substring(1), Nil, Team(nextInt(defaultPlayer) + 1), defaultArmy)
+      val countryToAdd = Country(newCountry.substring(1), Nil, Team(nextInt(players) + 1), defaultArmy)
       val newCountryList = updateCountryList(countryToAdd)
       val newContinentList = updateContinentList(headContinent().copy(countryList = newCountryList))
       updateBattlefield(newContinentList)

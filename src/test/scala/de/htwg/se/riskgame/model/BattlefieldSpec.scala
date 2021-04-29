@@ -8,14 +8,16 @@ import org.scalatest.wordspec.AnyWordSpec
 class BattlefieldSpec extends AnyWordSpec with Matchers {
   "A Battlefield" when {
     "new" should {
-      val battlefield = Battlefield("Battlefield Name", Nil)
+      val battlefield = Battlefield("Battlefield Name", Nil, 2)
       "have a battlefield name and a continent list" in {
         battlefield.name should be("Battlefield Name")
         battlefield.continentList should be(Nil)
+        battlefield.players should be(2)
       }
       "have the right type parameter" in {
         battlefield.name.isInstanceOf[String] should be(true)
         battlefield.continentList.isInstanceOf[List[Continent]] should be(true)
+        battlefield.players.isInstanceOf[Int] should be(true)
       }
       "have a nice String representation" in {
         battlefield.toString should be("Battlefield Name")
@@ -30,7 +32,7 @@ class BattlefieldSpec extends AnyWordSpec with Matchers {
       val cty2_3 = Country("cty2_3", List("cty2_2"), Team(2), 3)
       val co1 = Continent("co1", List(cty1_1, cty1_2))
       val co2 = Continent("co2", List(cty2_1, cty2_2, cty2_3))
-      val battlefield = Battlefield("battlefield", List(co1, co2))
+      val battlefield = Battlefield("battlefield", List(co1, co2), 2)
 
       "initialize a map matrix" in {
         battlefield.maxCountryListSize should be(3)

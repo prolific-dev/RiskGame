@@ -1,6 +1,6 @@
 package de.htwg.se.riskgame.model
 
-case class Battlefield(name: String, continentList: List[Continent]) {
+case class Battlefield(name: String, continentList: List[Continent], players: Int) {
 
   override def toString: String = name
 

@@ -7,7 +7,7 @@ import org.scalatest.wordspec.AnyWordSpec
 class TuiSpec extends AnyWordSpec with Matchers {
   "A RiskGame Tui" should {
     val tui = new Tui()
-    var battlefield = Battlefield("", Nil)
+    var battlefield = Battlefield("", Nil, 2)
     "quit" in {
       battlefield = tui.processInputLine("q", battlefield)
       battlefield.name should be("")
