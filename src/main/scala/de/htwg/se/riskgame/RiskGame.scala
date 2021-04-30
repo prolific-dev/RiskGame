@@ -3,7 +3,6 @@ package de.htwg.se.riskgame
 import de.htwg.se.riskgame.aview.Tui
 import de.htwg.se.riskgame.controller.Controller
 import de.htwg.se.riskgame.model.Battlefield
-import de.htwg.se.riskgame.util.PrintMessage.{choosePlayersMessage, helloMessage}
 
 import scala.io.StdIn.readLine
 
@@ -14,15 +13,9 @@ object RiskGame {
   controller.notifyObservers()
 
   def main(args: Array[String]): Unit = {
-    var input = ""
-    var players = 0
+    var input: String = "" // replace later with args(0)
 
-    println(helloMessage())
-    println(choosePlayersMessage())
-
-    players = readLine(choosePlayersMessage()).toInt
-
-    controller.setPlayers(players)
+    controller.setPlayers(2)
 
     do {
       input = readLine()

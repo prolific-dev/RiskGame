@@ -2,7 +2,7 @@ package de.htwg.se.riskgame.util
 
 object PrintMessage {
   def helloMessage(): String = {
-    "Welcome to Risk Game!\n\n"
+    "\nWelcome to Risk Game!\n"
   }
 
   def choosePlayersMessage(): String = {
