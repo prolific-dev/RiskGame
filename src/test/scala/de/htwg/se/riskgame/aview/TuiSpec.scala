@@ -1,35 +1,35 @@
 package de.htwg.se.riskgame.aview
 
+import de.htwg.se.riskgame.controller.Controller
 import de.htwg.se.riskgame.model.Battlefield
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
 class TuiSpec extends AnyWordSpec with Matchers {
   "A RiskGame Tui" should {
-    val tui = new Tui()
-    var battlefield = Battlefield("", Nil, 2)
+    val defaultBattlefield = Battlefield("", Nil, 2)
+    val controller = new Controller(defaultBattlefield)
+    val tui = new Tui(controller)
     "quit" in {
-      battlefield = tui.processInputLine("q", battlefield)
-      battlefield.name should be("")
-      battlefield.continentList should be(Nil)
+      tui.processInputLine("q")
+      controller.battlefield should be(defaultBattlefield)
     }
     "start" in {
-      battlefield = tui.processInputLine("s", battlefield)
-      battlefield.name should be("")
-      battlefield.continentList should be(Nil)
+      tui.processInputLine("s")
+      controller.battlefield should be(defaultBattlefield)
     }
     "initialize a new battlefield" in {
-      battlefield = tui.processInputLine("init testmap", battlefield)
-      battlefield.name should be("testmap")
-      battlefield.continentList should not be Nil
+      tui.processInputLine("init testmap")
+      controller.battlefield.name should be("testmap")
+      controller.battlefield.continentList should not be Nil
     }
     "input does not match options" in {
       val arbitraryString = "asdf"
-      val bfNameBefore = battlefield.name
-      val bfConListBefore = battlefield.continentList
-      battlefield = tui.processInputLine(arbitraryString, battlefield)
-      battlefield.name should equal(bfNameBefore)
-      battlefield.continentList should equal(bfConListBefore)
+      val bfNameBefore = controller.battlefield.name
+      val bfConListBefore = controller.battlefield.continentList
+      tui.processInputLine(arbitraryString)
+      controller.battlefield.name should equal(bfNameBefore)
+      controller.battlefield.continentList should equal(bfConListBefore)
     }
   }
 }
