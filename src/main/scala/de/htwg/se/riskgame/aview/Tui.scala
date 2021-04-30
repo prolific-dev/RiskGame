@@ -17,4 +17,6 @@ class Tui(controller: Controller) {
       case _ => println(inputNotRecognizedMessage())
     }
   }
+
+  def printMap(map: String): Unit = println(map)
 }

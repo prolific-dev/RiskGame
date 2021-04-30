@@ -6,7 +6,7 @@ import de.htwg.se.riskgame.util.Team
 import scala.io.Source
 import scala.util.Random.nextInt
 
-object Loader {
+class Loader {
   def loadMap(name: String, players: Int): Battlefield = {
     val filename = "src/main/scala/de/htwg/se/riskgame/resources/" + name + ".txt"
     val mapSource = Source.fromFile(filename)

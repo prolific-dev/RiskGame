@@ -20,20 +20,14 @@ object RiskGame {
     println(helloMessage())
     println(choosePlayersMessage())
 
-    do {
-      try {
-        players = readLine().toInt
-      } catch {
-        case _: Throwable => println("Input must be a number of type Integer.")
-      }
-    } while (players < 2 || players > 4)
+    players = readLine(choosePlayersMessage()).toInt
 
     controller.setPlayers(players)
 
     do {
       input = readLine()
       tui.processInputLine(input)
-      controller.printMap()
+      tui.printMap(controller.battlefield.mapToString())
     } while (input != "q")
   }
 }

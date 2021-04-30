@@ -4,14 +4,16 @@ case class Battlefield(name: String, continentList: List[Continent], players: In
 
   override def toString: String = name
 
-  def printMap(): Unit = {
+  def mapToString(): String = {
+    var str = ""
     mapMatrix.foreach {
       row =>
         row.foreach(country =>
-          if (country == null) print("#\t")
-          else print(country.toString + "\t"))
-        println()
-    }.toString
+          if (country == null) str += "#\t"
+          else str += (country.toString + "\t"))
+        str += "\n"
+    }
+    str
   }
 
   def mapMatrix: Array[Array[Country]] = {

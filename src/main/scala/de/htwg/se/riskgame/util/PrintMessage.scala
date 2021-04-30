@@ -6,7 +6,7 @@ object PrintMessage {
   }
 
   def choosePlayersMessage(): String = {
-    "How many players are going to play? (1-4)"
+    "How many players are going to play? (2-4)"
   }
 
   def chooseMapMessage(): String = {

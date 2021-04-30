@@ -23,7 +23,7 @@ class BattlefieldSpec extends AnyWordSpec with Matchers {
         battlefield.toString should be("Battlefield Name")
       }
     }
-    "print out on console as map" should {
+    "initialization and printable matrix" should {
       // Similar to testmap.txt
       val cty1_1 = Country("cty1_1", List("cty1_2"), Team(1), 3)
       val cty1_2 = Country("cty1_2", List("cty1_2", "cty2_2"), Team(1), 3)
@@ -37,6 +37,11 @@ class BattlefieldSpec extends AnyWordSpec with Matchers {
       "initialize a map matrix" in {
         battlefield.maxCountryListSize should be(3)
         battlefield.mapMatrix should be(Array(Array(cty1_1, cty2_1), Array(cty1_2, cty2_2), Array(null, cty2_3)))
+      }
+      "map as string" in {
+        // Add more tests here
+        val map = battlefield.mapToString()
+        map.isInstanceOf[String] should be(true)
       }
     }
   }
