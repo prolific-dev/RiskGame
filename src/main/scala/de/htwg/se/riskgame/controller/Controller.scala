@@ -1,7 +1,7 @@
 package de.htwg.se.riskgame.controller
 
 import de.htwg.se.riskgame.model.Battlefield
-import de.htwg.se.riskgame.util.{Loader, Observable}
+import de.htwg.se.riskgame.util.Observable
 
 class Controller(var battlefield: Battlefield) extends Observable {
 
