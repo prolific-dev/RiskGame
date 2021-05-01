@@ -1,7 +1,7 @@
 # Risk Game
 
 [![Build Status](https://travis-ci.com/prolific-dev/RiskGame.svg?branch=main)](https://travis-ci.com/prolific-dev/RiskGame)
-[![Coverage Status](https://coveralls.io/repos/github/prolific-dev/RiskGame/badge.svg?branch=main)](https://coveralls.io/github/prolific-dev/RiskGame?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/prolific-dev/RiskGame/badge.svg?branch=main&kill_cache=1)](https://coveralls.io/github/prolific-dev/RiskGame?branch=main&kill_cache=1)
 
 <img src="https://i.pinimg.com/originals/84/cd/98/84cd983d3824eefb24c1c507e1dc7496.jpg" alt="example pic" height="230" width="400" hspace="5"/>
 
