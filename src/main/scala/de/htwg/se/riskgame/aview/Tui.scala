@@ -1,7 +1,7 @@
 package de.htwg.se.riskgame.aview
 
+import de.htwg.se.riskgame.aview.Messages.{chooseMapMessage, helloMessage, initMapMessage, inputNotRecognizedMessage}
 import de.htwg.se.riskgame.controller.Controller
-import de.htwg.se.riskgame.util.PrintMessage.{chooseMapMessage, helloMessage, initMapMessage, inputNotRecognizedMessage}
 
 class Tui(controller: Controller) {
 
@@ -13,12 +13,10 @@ class Tui(controller: Controller) {
         println(helloMessage())
         println(chooseMapMessage())
       case "init testmap" | "init worldmap" =>
-        val mapToInit = input.split(" ")(1)
+        val map = input.split(" ")(1)
         println(initMapMessage())
-        controller.loadMap(mapToInit)
+        controller.loadMap(map)
       case _ => println(inputNotRecognizedMessage())
     }
   }
-
-  def printMap(map: String): Unit = println(map)
 }

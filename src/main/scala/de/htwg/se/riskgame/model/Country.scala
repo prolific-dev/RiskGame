@@ -1,7 +1,5 @@
 package de.htwg.se.riskgame.model
 
-import de.htwg.se.riskgame.util.Team
-
 import scala.Console._
 
 

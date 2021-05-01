@@ -1,6 +1,6 @@
-package de.htwg.se.riskgame.util
+package de.htwg.se.riskgame.aview
 
-object PrintMessage {
+object Messages {
   def helloMessage(): String = {
     "\nWelcome to Risk Game!\n"
   }

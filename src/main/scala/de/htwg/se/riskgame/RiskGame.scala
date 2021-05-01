@@ -20,7 +20,7 @@ object RiskGame {
     do {
       input = readLine()
       tui.processInputLine(input)
-      tui.printMap(controller.battlefield.mapToString())
+      println(controller.battlefield.mapToString())
     } while (input != "q")
   }
 }

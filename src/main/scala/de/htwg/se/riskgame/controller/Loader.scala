@@ -1,7 +1,6 @@
 package de.htwg.se.riskgame.controller
 
-import de.htwg.se.riskgame.model.{Battlefield, Continent, Country}
-import de.htwg.se.riskgame.util.Team
+import de.htwg.se.riskgame.model.{Battlefield, Continent, Country, Team}
 
 import scala.io.Source
 import scala.util.Random.nextInt

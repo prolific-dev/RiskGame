@@ -1,6 +1,5 @@
 package de.htwg.se.riskgame.model
 
-import de.htwg.se.riskgame.util.Team
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
