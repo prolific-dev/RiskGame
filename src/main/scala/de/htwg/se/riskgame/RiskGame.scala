@@ -13,7 +13,7 @@ object RiskGame {
   controller.notifyObservers()
 
   def main(args: Array[String]): Unit = {
-    var input: String = args(0) // replace later with args(0)
+    var input: String = args(0)
 
     controller.setPlayers(2)
 
