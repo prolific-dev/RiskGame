@@ -13,11 +13,13 @@ object RiskGame {
   controller.notifyObservers()
 
   def main(args: Array[String]): Unit = {
-    var input: String = "" // replace later with args(0)
+    var input: String = args(0)
 
     controller.setPlayers(2)
 
-    do {
+
+    if (input.nonEmpty) tui.processInputLine(input)
+    else do {
       input = readLine()
       tui.processInputLine(input)
       println(controller.battlefield.mapToString())
