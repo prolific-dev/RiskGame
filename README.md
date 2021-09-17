@@ -1,5 +1,9 @@
 # Risk Game
 
+Project files are still in progress and only public because of VCS and sharing purpose...
+
+***
+
 [![Build Status](https://travis-ci.com/prolific-dev/RiskGame.svg?branch=main)](https://travis-ci.com/prolific-dev/RiskGame)
 [![Coverage Status](https://coveralls.io/repos/github/prolific-dev/RiskGame/badge.svg?branch=main&kill_cache=1)](https://coveralls.io/github/prolific-dev/RiskGame?branch=main&kill_cache=1)
 
